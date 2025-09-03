@@ -1,21 +1,21 @@
 {
-  "name": "jm",
+  "name": "personalwebsite",
   "version": "1.0.0",
-  "main": "index.js",
+  "main": "main/server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node main/server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/TheZriano/jerkmate-website.git"
+    "url": "git+https://github.com/TheZriano/personalWebsite.git"
   },
-  "author": "",
+  "author": "TheZriano",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/TheZriano/jerkmate-website/issues"
+    "url": "https://github.com/TheZriano/personalWebsite/issues"
   },
-  "homepage": "https://github.com/TheZriano/jerkmate-website#readme",
+  "homepage": "https://github.com/TheZriano/personalWebsite#readme",
   "description": "",
   "dependencies": {
     "cors": "^2.8.5",
