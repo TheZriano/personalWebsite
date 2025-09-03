@@ -3,6 +3,9 @@ require('dotenv').config({ path: __dirname + '/.env' });
 const path =require("path");
 const cors=require("cors");
 const database = require("./dbPosgresql.js");
+const cookieParser = require("cookie-parser");
+
+
 const port="3000"
 
 const app =express();
