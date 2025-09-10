@@ -18,7 +18,17 @@ app.use(express.static(path.join(__dirname, "frontend")));
 
 app.get("/", (req,res) => {
     
-    res.status(200).send("richiesta successo")
+    res.sendFile(path.join(__dirname,"frontend/homepage.html"))
+
+});
+app.get("/contacts", (req,res) => {
+    
+    res.sendFile(path.join(__dirname,"frontend/contacts.html"))
+
+});
+app.get("/projects", (req,res) => {
+    
+    res.sendFile(path.join(__dirname,"frontend/portfolio.html"))
 
 });
 

@@ -1,0 +1,19 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&display=swap');
+
+
+:root {
+    --background:#f7f7f7;
+    --primary:#ffffff;
+    --border: #f3f3f3;
+    --textColor:#000000;
+    --accent:#007bff;
+
+}
+
+*{
+    font-family: "roboto", Arial, Helvetica, sans-serif;
+}
+
+body{
+    margin-top: 80px;
+}

@@ -1,0 +1,101 @@
+body{
+    margin: 0;
+    height: 100vh;
+    display: flex;
+    align-content: flex-start;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    justify-content: flex-end;
+    padding-bottom: 100px;
+    padding-left: 50px;
+    background-color: var(--background);
+}
+
+.titleBox{
+    padding: 20px 20px 20px 20px;
+    border-radius: 18px;
+    border: 3px solid var(--border);
+    background-color: var(--primary);
+    box-shadow: var(--border) 0px 0px 6px;
+    max-width: 600px;
+}
+
+h1{
+    font-size: 3em;
+    margin: 0;
+    padding: 0;
+    color: var(--textColor);
+    font-weight: 900;
+    text-transform: capitalize;
+}
+
+p{
+    font-size: 1.2em;
+    margin: 0;
+    padding: 0;
+    color: var(--textColor);
+    font-weight: 400;
+    margin-top: 10px;
+    margin-bottom: 15px;
+    line-height: 110%;
+}
+
+a{
+    text-decoration: none;
+    color: white;
+    background-color: var(--accent);
+    padding: 5px;
+    font-size: 1.3em;
+    border-radius: 8px;
+    font-weight: 500;
+    box-shadow: var(--border) 0px 0px 6px;
+    margin-right: 10px;
+    transition: 200ms ease;
+}
+
+.buttons{
+        display: flex;
+        flex-direction: row;
+        justify-content: left;
+        flex-wrap: wrap;
+        gap: 10px;
+}
+
+@media (max-width: 700px){
+    body{
+        padding: 20px;
+        justify-content: flex-start;
+        align-items: center;
+    }
+
+    .titleBox{
+        max-width: 100%;
+        padding: 15px;
+    }
+
+    h1{
+        font-size: 2.5em;
+        text-align: center;
+    }
+
+    p{
+        font-size: 1em;
+        text-align: center;
+    }
+
+    a{
+        font-size: 1.2em;
+        padding: 10px;
+        margin: 0;
+    }
+    .buttons{
+        justify-content: center;
+        gap: 15px;
+    }
+    
+}
+@media (hover:hover) {
+    a:hover{
+        transform: scale(1.1);
+    }
+}
