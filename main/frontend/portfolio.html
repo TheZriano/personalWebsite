@@ -6,22 +6,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
-    <link rel="stylesheet" href="css/homepage.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/portfolio.css">
 </head>
 <body>
+    <header>
+        <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+        </a>
+        <div>
+            <a href="/contacts">Contatti</a>
+        </div>
+    </header>
     <main>
-        <div class="titleBox">
-        
-            <h1>portfolio</h1>
-            <p>portfolio</p>
-            <div class="buttons">
-                <a href="/contacts">Contattami</a>
-                <a href="/projects">Portfolio</a>
+        <h1>Il Mio Portfolio</h1>
+        <div class="projectsBox" id="projects">
+            <div class="dummy">
+                <div class="dummyImage"></div>
+                <div class="dummyTitle"></div>
+                <div class="dummyDescription"></div>
             </div>
-            
-
+            <div class="dummy">
+                <div class="dummyImage"></div>
+                <div class="dummyTitle"></div>
+                <div class="dummyDescription"></div>
+            </div>
+            <div class="dummy">
+                <div class="dummyImage"></div>
+                <div class="dummyTitle"></div>
+                <div class="dummyDescription"></div>
+            </div>
+            <div class="dummy">
+                <div class="dummyImage"></div>
+                <div class="dummyTitle"></div>
+                <div class="dummyDescription"></div>
+            </div>
+            <div class="dummy">
+                <div class="dummyImage"></div>
+                <div class="dummyTitle"></div>
+                <div class="dummyDescription"></div>
+            </div>
+            <div class="dummy">
+                <div class="dummyImage"></div>
+                <div class="dummyTitle"></div>
+                <div class="dummyDescription"></div>
+            </div>
+            <!--<a class="project" href="/project?id=1">
+                <img src="images/projectBanner1.png" alt="Progetto 1">
+                <h2>Progetto 1</h2>
+                <p>Descrizione del progetto 1.</p>
+            </a>-->
         </div>  
     </main>
     
 </body>
+<script>
+    function loadProjects() {
+        fetch('/api/projects')
+            .then(response => response.json())
+            .then(data => {
+                const projectsContainer = document.getElementById('projects');
+                projectsContainer.innerHTML = ''; // Clear existing content
+
+                data.forEach(project => {
+                    const projectElement = document.createElement('a');
+                    projectElement.className = 'project';
+                    projectElement.href = `/project?id=${project.id}`;
+
+                    const img = document.createElement('img');
+                    img.src = project.image;
+                    img.alt = project.title;
+
+                    const title = document.createElement('h2');
+                    title.textContent = project.title;
+
+                    const description = document.createElement('p');
+                    description.textContent = project.description;
+
+                    projectElement.appendChild(img);
+                    projectElement.appendChild(title);
+                    projectElement.appendChild(description);
+
+                    projectsContainer.appendChild(projectElement);
+                });
+            })
+            .catch(error => console.error('Error loading projects:', error));
+    }
+    document.addEventListener('DOMContentLoaded', loadProjects);
+</script>
 </html>
