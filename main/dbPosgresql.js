@@ -1,17 +1,18 @@
 const db = require('./db');
+const tg = require('./botTelegram');
 
-async function getUserById(id) {
+async function getProjects(id) {
   try {
-    const res = await db.query("SELECT * FROM users WHERE id = $1", [id]);
-    const user = res.rows[0];
-    return user;
+    const res = await db.query("SELECT (id, title, description, bannerSrc) FROM projects", [id]);
+    const projects = res.rows;
+    return projects;
   } catch (err) {
-    console.error('Errore durante la query:', err);
+    tg.brodcastError('Errore durante la query:', err);
   }
 }
 
 
 
 module.exports = {
-  getUserById
+  getProjects
 }

@@ -4,6 +4,7 @@ const path =require("path");
 const cors=require("cors");
 const database = require("./dbPosgresql.js");
 const cookieParser = require("cookie-parser");
+const tg = require("./botTelegram.js");
 
 
 const port="3000"
@@ -14,6 +15,10 @@ app.use(express.json());
 app.use(cookieParser());
 app.use(cors({origin:"http://localhost:3000", credentials: true}));
 app.use(express.static(path.join(__dirname, "frontend")));
+
+async function sendErrorViaTg(error) {
+    
+}
 
 //*ROUTES FRONTEND
 app.get("/", (req,res) => {
@@ -34,7 +39,7 @@ app.get("/api/projects", async (req,res) => {
         const projects= await database.getProjects();
         res.json(projects);
     }catch(err){
-        console.error(err.message);
+        tg.brodcastError(process.env.TG_CHAT_ID, err);
         res.status(500).send("Server error");
     }
 });

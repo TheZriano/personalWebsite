@@ -68,6 +68,11 @@
                 const projectsContainer = document.getElementById('projects');
                 projectsContainer.innerHTML = ''; // Clear existing content
 
+                if (data.length === 0) {
+                    projectsContainer.innerHTML = '<p>Nessun progetto disponibile.</p>';
+                    return;
+                }
+                
                 data.forEach(project => {
                     const projectElement = document.createElement('a');
                     projectElement.className = 'project';
