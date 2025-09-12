@@ -32,12 +32,29 @@ app.get("/contacts", (req,res) => {
 app.get("/projects", (req,res) => {
     res.sendFile(path.join(__dirname,"frontend/portfolio.html"))
 });
+app.get("/project", (req,res) => {
+    res.sendFile(path.join(__dirname,"frontend/project.html"))
+});
 
 //*ROUTES API
 app.get("/api/projects", async (req,res) => {
     try{
         const projects= await database.getProjects();
         res.json(projects);
+    }catch(err){
+        tg.brodcastError(process.env.TG_CHAT_ID, err);
+        res.status(500).send("Server error");
+    }
+});
+
+app.get("/api/project", async (req,res) => {
+    const id=req.query.id;
+    try{
+        const project= await database.getProjectById(id);
+        if(!project){
+            return res.status(404).send("Project not found");
+        }
+        res.json(project);
     }catch(err){
         tg.brodcastError(process.env.TG_CHAT_ID, err);
         res.status(500).send("Server error");

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <title>Contatti</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="css/reset.css">
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/header.css">
+    <link rel="stylesheet" href="css/project.css">
+</head>
+
+<body>
+    <header>
+        <a href="/">
+            <svg xmlns="http://www.w3.org/2000/svg" height="24px" viewBox="0 -960 960 960" width="24px" fill="#000000"><path d="M240-200h120v-240h240v240h120v-360L480-740 240-560v360Zm-80 80v-480l320-240 320 240v480H520v-240h-80v240H160Zm320-350Z"/></svg>
+        </a>
+        <div>
+            <a href="/projects">Portfolio</a>
+        </div>
+    </header>
+    <main id="main" >
+        <!--<h1>Titolo del Progetto</h1>
+        <div class="projectContainer">
+            <img class="projectImage" src="images/projectBanner1.png" alt="Immagine del Progetto">
+            <div class="projectDescription">
+                <h2>h2</h2>
+                <h3>h3</h3>
+                <img src="images/projectBanner1.png" alt="">
+                <p>Descrizione <a href="ciao">ciaone</a> dettagliata del progetto. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</p>
+            </div>
+        </div>-->
+        <div class="dummyTitle"></div>
+        <div class="projectContainer">
+            <div class="dummyBanner"></div>
+            <div class="dummyDescription"></div>
+        </div>
+        
+        
+    </main>
+</body>
+<script>
+    function getProject(){
+        const params = new URLSearchParams(window.location.search);
+        const id = params.get('id');
+        if(!id) window.location.href = '/projects';
+        fetch(`/api/project?id=${id}`)
+            .then(response => {
+                if (!response.ok) {
+                    window.location.href = '/projects';
+                    return;
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (!data) return;
+                document.getElementById("main").innerHTML = `
+                    <h1>${data.title}</h1>
+                    <div class="projectContainer">
+                        <img class="projectImage" src="${data.imgSrc}">
+                        <div class="projectDescription">
+                            ${data.text}
+                        </div>
+                    </div>
+                `;
+            })
+            .catch(error => console.error('Errore nel recupero dei dati del progetto:', error));
+    }
+    getProject();
+</script>
+</html>
