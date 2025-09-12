@@ -64,6 +64,7 @@ main{
     color: var(--textColor);
     font-weight: 700;
     text-align: center;
+    line-height: normal;
 }
 
 .projectDescription h3{
@@ -72,6 +73,7 @@ main{
     font-weight: 600;
     text-align: center;
     padding: 10px 0 0;
+    line-height: normal;
 }
 .projectDescription a{
     text-decoration: underline;

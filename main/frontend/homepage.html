@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/reset.css">
     <link rel="stylesheet" href="css/main.css">
     <link rel="stylesheet" href="css/homepage.css">
+    <meta name="theme-color" content="var(--background)"> <!-- Per telefoni (barra in alto) -->
+
 </head>
 <body>
     <main>
@@ -17,10 +19,79 @@
             <div class="buttons">
                 <a href="/contacts">Contattami</a>
                 <a href="/projects">Portfolio</a>
+                <a href="/login" style="display: none;" id="loginButton" class="adminButton">Login</a>
+                <a href="/login" style="display: none;" class="loggedButton adminButton">prova</a>
             </div>
             
 
         </div>  
     </main>
 </body>
+<script>
+    document.addEventListener("keydown", (event) => {
+        if (event.ctrlKey && event.altKey && event.key === 'a') {
+            let userLoggedIn = false;
+            if (userLoggedIn){
+                document.querySelectorAll("a.loggedButton")
+                .forEach(element => {
+                    element.style.display = 'block';
+                });
+            }else{
+                document.getElementById("loginButton").style.display = 'block';
+            }
+            
+        }
+    });
+</script>
+<script>
+    let startY
+    let sequence = [];
+
+    document.addEventListener('touchstart', e => {
+    startY = e.touches[0].clientY;
+    });
+
+    document.addEventListener('touchend', e => {
+    const endY = e.changedTouches[0].clientY;
+    const delta = endY - startY;
+    if (Math.abs(delta) > 50) {
+        sequence.push(delta > 0 ? 'down' : 'up');
+        if (sequence.length > 3) sequence.shift();
+        
+    }
+    });
+
+    let touchTimer = null;
+
+    document.querySelector('.titleBox').addEventListener('touchstart', function(e) {
+        touchTimer = setTimeout(() => {
+            if (sequence.join('-') === 'up-down-up') {
+                let userLoggedIn = false;
+                if (userLoggedIn){
+                    document.querySelectorAll("a.loggedButton")
+                    .forEach(element => {
+                        element.style.display = 'block';
+                    });
+                }else{
+                    document.getElementById("loginButton").style.display = 'block';
+                }
+                sequence = [];
+            }
+        }, 3000);
+    });
+
+    document.querySelector('.titleBox').addEventListener('touchend', function(e) {
+        clearTimeout(touchTimer);
+        touchTimer = null;
+    });
+
+    document.querySelector('.titleBox').addEventListener('touchmove', function(e) {
+    const moveY = e.touches[0].clientY - startY;
+    if (Math.abs(moveY) > 20) { // tolleranza di 20px
+        touchMoved = true;
+        clearTimeout(touchTimer);
+        touchTimer = null;
+    }
+});
+</script>
 </html>

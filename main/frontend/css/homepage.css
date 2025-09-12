@@ -1,6 +1,6 @@
 body{
     margin: 0;
-    height: 100vh;
+    height: 100svh;
     display: flex;
     align-content: flex-start;
     flex-direction: column;
@@ -10,6 +10,12 @@ body{
     padding-left: 50px;
     background-color: var(--background);
 }
+
+main{
+    padding-top: 0 !important;
+}
+
+
 
 .titleBox{
     padding: 20px 20px 20px 20px;
@@ -51,6 +57,10 @@ a{
     box-shadow: var(--border) 0px 0px 6px;
     margin-right: 10px;
     transition: 200ms ease;
+}
+
+.adminButton{
+    background-color: var(--loggedAccent);
 }
 
 .buttons{

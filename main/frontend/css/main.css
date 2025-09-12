@@ -8,6 +8,7 @@
     --textColor:#000000;
     --accent:#007bff;
     --secundary:#e6e6e6;
+    --loggedAccent:#d62000;
 
 }
 
@@ -15,6 +16,10 @@
     font-family: "roboto", Arial, Helvetica, sans-serif;
 }
 
+main{
+    padding-top: 80px;
+
+}
 body{
-    margin-top: 80px;
+    background-color: var(--primary);
 }
